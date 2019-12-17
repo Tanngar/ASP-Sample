@@ -1,0 +1,26 @@
+﻿@model ASPExample.ViewModels.ProductsListViewModel
+
+<table class="products-table">
+    <tbody>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Reviews</th>
+        </tr>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Title, "Details", new { id = item.ProductId })
+                </td>
+                <td>
+                    @item.Category
+                </td>
+                <td>
+                    @Model.Reviews.ToList().FindAll(x => x.ProductId == item.ProductId).Count()
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

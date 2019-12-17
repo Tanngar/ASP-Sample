@@ -1,0 +1,17 @@
+﻿@model ASPExample.Models.Review
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <form>
+        <h1>Add review</h1>
+        @Html.ValidationMessageFor(model => model.Heading, "")
+        @Html.EditorFor(model => model.Heading, new { htmlAttributes = new { @class = "input-field", placeholder = "Heading" } })
+
+        @Html.ValidationMessageFor(model => model.Body, "")
+        @Html.TextAreaFor(model => model.Body, new { @class = "input-field", rows = 20, placeholder = "Body", type = "text-box" })
+
+        <input class="button" type="submit" value="ADD REVIEW" />
+    </form>
+}

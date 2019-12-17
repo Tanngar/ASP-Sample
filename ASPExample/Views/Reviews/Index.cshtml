@@ -1,0 +1,54 @@
+﻿@model ASPExample.ViewModels.ProductsListViewModel
+
+<table class="products-table">
+    <tbody>
+        <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Review</th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model.Reviews)
+        {
+            <tr>
+                <td>
+                    @Model.Products.ToList().Find(x => x.ProductId == item.ProductId).Title
+                </td>
+                <td>
+                    @Model.Products.ToList().Find(x => x.ProductId == item.ProductId).Category
+                </td>
+                <td>
+                    @item.Heading
+                    <br />
+                    @item.Body
+                </td>
+                <td>
+                    <span>
+                        @Html.ActionLink(
+                           linkText: "EDIT",
+                           actionName: "Edit",
+                           controllerName: "Reviews",
+                           routeValues: new { id = item.ReviewId, previousPage = HttpContext.Current.Request.Url.AbsoluteUri },
+                           htmlAttributes: null
+                        )
+                    </span>
+                    <span>
+                        @Html.ActionLink(
+                           linkText: "DELETE",
+                           actionName: "Delete",
+                           controllerName: "Reviews",
+                           routeValues: new { id = item.ReviewId, previousPage = HttpContext.Current.Request.Url.AbsoluteUri },
+                           htmlAttributes: null
+                        )
+                    </span>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+

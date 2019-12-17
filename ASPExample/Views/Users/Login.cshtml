@@ -1,0 +1,18 @@
+﻿@model ASPExample.ViewModels.LoginViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <form>
+        <h1>Login</h1>
+        @Html.ValidationMessage("error")
+
+        @Html.ValidationMessageFor(model => model.Username, "")
+        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "input-field", placeholder = "Username" } })
+
+        @Html.ValidationMessageFor(model => model.Password, "")
+        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input-field", placeholder = "Password", type = "password" } })
+
+        <input class="button" type="submit" value="LOGIN" />
+    </form>
+}

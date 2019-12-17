@@ -1,0 +1,25 @@
+﻿@model ASPExample.ViewModels.RegisterViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <form>
+        <h1>Register</h1>
+        @Html.ValidationMessageFor(model => model.User.FirstName, "")
+        @Html.EditorFor(model => model.User.FirstName, new { htmlAttributes = new { @class = "input-field", placeholder = "First name" } })
+
+        @Html.ValidationMessageFor(model => model.User.LastName, "")
+        @Html.EditorFor(model => model.User.LastName, new { htmlAttributes = new { @class = "input-field", placeholder = "Last name" } })
+
+        @Html.ValidationMessageFor(model => model.User.Username, "")
+        @Html.EditorFor(model => model.User.Username, new { htmlAttributes = new { @class = "input-field", placeholder = "Username" } })
+
+        @Html.ValidationMessageFor(model => model.User.Password, "")
+        @Html.EditorFor(model => model.User.Password, new { htmlAttributes = new { @class = "input-field", placeholder = "Password", type = "password" } })
+
+        @Html.ValidationMessageFor(model => model.RepeatPassword, "")
+        @Html.EditorFor(model => model.RepeatPassword, new { htmlAttributes = new { @class = "input-field", placeholder = "Repeat password", type = "password" } })
+
+        <input class="button" type="submit" value="REGISTER" />
+    </form>
+}
